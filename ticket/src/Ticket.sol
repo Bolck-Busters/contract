@@ -38,6 +38,7 @@ contract Ticket {
     }
 
     function increaseDeposit() external payable {
+        require(msg.value > 0, "Deposit value must be greater than 0");
         deposit += msg.value;
     }
 
