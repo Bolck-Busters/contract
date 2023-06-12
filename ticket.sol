@@ -24,7 +24,6 @@ contract Ticket {
         deposit += totalPayment;
 
         emit TicketBought(msg.sender, totalPayment);
-        
         return true;
     }
 

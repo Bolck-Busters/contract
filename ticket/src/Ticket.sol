@@ -17,15 +17,13 @@ contract Ticket {
         _;
     }
 
-    function buyTicket(uint256 ticketFee, uint256 num) external payable returns (bool) {
+    function buyTicket(uint256 ticketFee, uint256 num) external payable returns (uint256) {
         uint256 totalPayment = ticketFee * num;
-        require(msg.value >= totalPayment, "Insufficient payment");
-
         deposit += totalPayment;
-
+        
         emit TicketBought(msg.sender, totalPayment);
         
-        return true;
+        return totalPayment;
     }
 
     function claimPrize(address payable gamer, uint256 amount) public onlyOwner returns (bool) {
